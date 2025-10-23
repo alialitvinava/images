@@ -13,44 +13,47 @@ header[data-testid="stHeader"] {
     background-color: #003366;   /* dark blue */
     height: 60px !important;
     display: flex !important;
-    align-items: stretch !important;   /* allow children to fill full height */
+    align-items: stretch !important;
     padding: 0 !important;
 }
 
-/* make all containers inside header stretch vertically */
+/* --- Force containers inside header to stretch full height --- */
 header[data-testid="stHeader"] > div,
 header[data-testid="stHeader"] nav,
-header[data-testid="stHeader"] nav > div {
+header[data-testid="stHeader"] nav > div,
+header[data-testid="stHeader"] .rc-overflow,               /* rc-overflow wrapper */
+header[data-testid="stHeader"] .st-emotion-cache-qreyob,  /* emotion class */
+header[data-testid="stHeader"] .en0apyo13 {
     display: flex !important;
     align-items: stretch !important;
     height: 100% !important;
 }
 
-/* --- TEXT COLOR --- */
+/* --- Text color --- */
 header[data-testid="stHeader"] * {
     color: #ffffff !important;
 }
 
-/* --- BASE NAV LINKS --- */
+/* --- Base navigation links --- */
 a[data-testid="stTopNavLink"] {
     background-color: transparent;
     color: #ffffff !important;
     border-radius: 0 !important;
-    height: 100% !important;         /* fill header height */
+    height: 100% !important;              /* fill header height */
     display: flex !important;
-    align-items: center !important;  /* vertical center */
+    align-items: center !important;
     justify-content: center !important;
     padding: 0 24px !important;
     text-decoration: none !important;
     transition: background-color 0.3s ease;
 }
 
-/* --- HOVER EFFECT --- */
+/* --- Hover effect --- */
 a[data-testid="stTopNavLink"]:hover {
     background-color: #004080 !important;
 }
 
-/* --- ACTIVE PAGE LINK --- */
+/* --- Active page link --- */
 a[data-testid="stTopNavLink"][aria-current="page"] {
     background-color: #0059b3 !important;
     color: #ffffff !important;
@@ -59,7 +62,7 @@ a[data-testid="stTopNavLink"][aria-current="page"] {
     height: 100% !important;
 }
 
-/* --- Ensure nav container itself has no padding/margins --- */
+/* --- Ensure top nav container fills the header vertically --- */
 [data-testid="stTopNav"] {
     height: 100% !important;
     display: flex !important;
@@ -71,3 +74,4 @@ a[data-testid="stTopNavLink"][aria-current="page"] {
 """, unsafe_allow_html=True)
 
 pg.run()
+
