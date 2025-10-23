@@ -10,68 +10,48 @@ st.markdown("""
 <style>
 /* --- HEADER BAR --- */
 header[data-testid="stHeader"] {
-    background-color: #003366;   /* dark blue */
+    background-color: #003366;     /* dark blue */
     height: 60px !important;
     display: flex !important;
     align-items: stretch !important;
     padding: 0 !important;
 }
 
-/* --- Force containers inside header to stretch full height --- */
-header[data-testid="stHeader"] > div,
-header[data-testid="stHeader"] nav,
-header[data-testid="stHeader"] nav > div,
-header[data-testid="stHeader"] .rc-overflow,               /* rc-overflow wrapper */
-header[data-testid="stHeader"] .st-emotion-cache-qreyob,  /* emotion class */
-header[data-testid="stHeader"] .en0apyo13 {
+/* --- RC-OVERFLOW CONTAINER --- */
+header[data-testid="stHeader"] .rc-overflow {
     display: flex !important;
     align-items: stretch !important;
     height: 100% !important;
 }
 
-/* --- Text color --- */
-header[data-testid="stHeader"] * {
-    color: #ffffff !important;
-}
-
-/* --- Base navigation links --- */
-a[data-testid="stTopNavLink"] {
-    background-color: transparent;
-    color: #ffffff !important;
-    border-radius: 0 !important;
-    height: 100% !important;              /* fill header height */
+/* --- Make every nav link full-height, flat --- */
+header[data-testid="stHeader"] .rc-overflow a[data-testid="stTopNavLink"] {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    height: 100% !important;           /* full height of header */
     padding: 0 24px !important;
+    border-radius: 0 !important;       /* flat edges */
+    background-color: transparent;
+    color: #ffffff !important;
     text-decoration: none !important;
     transition: background-color 0.3s ease;
 }
 
-/* --- Hover effect --- */
-a[data-testid="stTopNavLink"]:hover {
+/* --- Hover --- */
+header[data-testid="stHeader"] .rc-overflow a[data-testid="stTopNavLink"]:hover {
     background-color: #004080 !important;
 }
 
-/* --- Active page link --- */
-a[data-testid="stTopNavLink"][aria-current="page"] {
+/* --- Active Page (selected) --- */
+header[data-testid="stHeader"] .rc-overflow a[data-testid="stTopNavLink"][aria-current="page"] {
     background-color: #0059b3 !important;
     color: #ffffff !important;
     font-weight: bold !important;
     border-radius: 0 !important;
     height: 100% !important;
 }
-
-/* --- Ensure top nav container fills the header vertically --- */
-[data-testid="stTopNav"] {
-    height: 100% !important;
-    display: flex !important;
-    align-items: stretch !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
 </style>
 """, unsafe_allow_html=True)
 
 pg.run()
-
