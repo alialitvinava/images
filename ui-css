@@ -1,0 +1,98 @@
+import streamlit as st
+
+pg = st.navigation([
+    st.Page("home.py", title="Home"),
+    st.Page("about.py", title="About"),
+    st.Page("contact.py", title="Contact")
+])
+
+st.markdown(
+"""
+<style>
+/* ===== Header base ===== */
+header[data-testid="stHeader"]{
+  background-color: #003366 !important;
+  height: 60px !important;           /* adjust as needed */
+  display:flex;
+  align-items:center;
+  padding:0 0 0 0 !important;
+  box-shadow:none !important;
+}
+
+/* force white text/icons */
+header[data-testid="stHeader"] * {
+  color: #ffffff !important;
+  fill: #ffffff !important; /* svg icons */
+}
+
+/* ===== Make every nav link fill full height and have no rounding ===== */
+/* target nav link and any nested wrappers */
+header[data-testid="stHeader"] [data-testid^="stNavigation"] ,
+header[data-testid="stHeader"] [data-testid^="stNavigation"] *,
+header[data-testid="stHeader"] [role="button"],
+header[data-testid="stHeader"] [role="button"] * {
+  border-radius: 0px !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  background-clip: padding-box !important;
+  box-shadow: none !important;
+}
+
+/* target specifically the nav link and inner div levels (common nesting) */
+[data-testid="stNavigationLink"],
+[data-testid="stNavigationLink"] > div,
+[data-testid="stNavigationLink"] > div > div,
+[data-testid="stNavigationLinkActive"],
+[data-testid="stNavigationLinkActive"] > div,
+[data-testid="stNavigationLinkActive"] > div > div {
+  border-radius: 0px !important;
+  height: 100% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding: 0 20px !important; /* horiz padding */
+  box-shadow:none !important;
+}
+
+/* active item: flat full-height background and no rounded corners at any level */
+[data-testid="stNavigationLinkActive"],
+[data-testid="stNavigationLinkActive"] * ,
+header[data-testid="stHeader"] div[style*="border-radius"],
+header[data-testid="stHeader"] div[style*="border-radius"] * {
+  background-color: #0059b3 !important;
+  border-radius: 0px !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  box-shadow:none !important;
+}
+
+/* remove any outline / inner highlight that can look rounded */
+header[data-testid="stHeader"] [data-testid$="Button"], 
+header[data-testid="stHeader"] button,
+header[data-testid="stHeader"] button * {
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+/* hover */
+[data-testid="stNavigationLink"]:hover,
+[data-testid="stNavigationLink"] > div:hover,
+[data-testid="stNavigationLinkActive"]:hover {
+  background-color: #004080 !important;
+}
+
+/* safety: undo caching of old border radiuses in pseudo elements */
+header[data-testid="stHeader"] *::before,
+header[data-testid="stHeader"] *::after {
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+/* if still rounded because of transform/clip, force overflow visible */
+header[data-testid="stHeader"] { overflow: visible !important; }
+</style>
+""",
+unsafe_allow_html=True
+)
+
+pg.run()
