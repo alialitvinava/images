@@ -8,46 +8,64 @@ pg = st.navigation([
 
 st.markdown("""
 <style>
-/* --- Header Bar --- */
+/* --- HEADER BAR --- */
 header[data-testid="stHeader"] {
     background-color: #003366;   /* dark blue */
-    height: 60px;
-    display: flex;
-    align-items: stretch;        /* let children fill full height */
+    height: 60px !important;
+    display: flex !important;
+    align-items: stretch !important;   /* allow children to fill full height */
     padding: 0 !important;
 }
 
-/* --- Text color --- */
+/* make all containers inside header stretch vertically */
+header[data-testid="stHeader"] > div,
+header[data-testid="stHeader"] nav,
+header[data-testid="stHeader"] nav > div {
+    display: flex !important;
+    align-items: stretch !important;
+    height: 100% !important;
+}
+
+/* --- TEXT COLOR --- */
 header[data-testid="stHeader"] * {
     color: #ffffff !important;
 }
 
-/* --- Base navigation links (inactive) --- */
+/* --- BASE NAV LINKS --- */
 a[data-testid="stTopNavLink"] {
     background-color: transparent;
     color: #ffffff !important;
-    border-radius: 0 !important;         /* remove rounding */
-    height: 100% !important;             /* full header height */
-    padding: 0 20px !important;          /* spacing */
+    border-radius: 0 !important;
+    height: 100% !important;         /* fill header height */
     display: flex !important;
-    align-items: center !important;
+    align-items: center !important;  /* vertical center */
     justify-content: center !important;
+    padding: 0 24px !important;
     text-decoration: none !important;
     transition: background-color 0.3s ease;
 }
 
-/* --- Hover effect --- */
+/* --- HOVER EFFECT --- */
 a[data-testid="stTopNavLink"]:hover {
     background-color: #004080 !important;
 }
 
-/* --- Active (selected) page link --- */
+/* --- ACTIVE PAGE LINK --- */
 a[data-testid="stTopNavLink"][aria-current="page"] {
-    background-color: #0059b3 !important; /* active blue */
+    background-color: #0059b3 !important;
     color: #ffffff !important;
     font-weight: bold !important;
-    border-radius: 0 !important;          /* ensure flat edges */
+    border-radius: 0 !important;
     height: 100% !important;
+}
+
+/* --- Ensure nav container itself has no padding/margins --- */
+[data-testid="stTopNav"] {
+    height: 100% !important;
+    display: flex !important;
+    align-items: stretch !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 </style>
 """, unsafe_allow_html=True)
